@@ -51,7 +51,7 @@ Z <- dat$Z
 X <- dat$X
 ```
 
-Rember when analyzing real datasets, we need to standardize the Z (exposure variables). To prevent potential sigularity problems, it would be great also standardize the covariate X, as long as it make sense. Too much categorical covariates may cause the program convergence problematicly, thus, it would be better using fewer categorical covariates or just combine categories in a reasonable way.
+Remember when analyzing real datasets, we need to standardize the Z (exposure variables). To prevent potential singularity problems, it would be great also standardize the covariate X, as long as it makes sense. Too many categorical covariates may cause the program convergence problematic, thus, it would be better to use fewer categorical covariates or just combine categories in a reasonable way.
 
 When analyzing real datasets, X here **must be a model matrix**, which can be generated in a similar way doing linear regression:
 ```r
@@ -91,13 +91,13 @@ Key parameters include:
 - `n.cores`: Number of cores to use for parallel computing (defaults to half of total cores if not specified)
 
 
-For choosing the suitable number of subsets, we recommend that for each sub dataset, the sample size is around 1000. However, the number of subsets should not greater than square root of total sample size.
+For choosing the suitable number of subsets, we recommend that for each sub dataset, the sample size is around 1000. However, the number of subsets should not be greater than the square root of the total sample size.
 
 ### Summarize model output
 
 **Plot the predictor-response function**
 
-One cross section of interest is the univariate relationship between each zm and the outcome, where all of the other exposures are fixed to a particular percentile. This can be done using the function PredictorResponseUnivar. The argument specifying the quantile at which to fix the other exposures is given by q.fixed (the default value is q.fixed = 0.5).
+One cross-section of interest is the univariate relationship between each zm and the outcome, where all of the other exposures are fixed to a particular percentile. This can be done using the function PredictorResponseUnivar. The argument specifying the quantile at which to fix the other exposures is given by q.fixed (the default value is q.fixed = 0.5).
 
 ```r
 pred.resp.univar <- PredictorResponseUnivar(fit = fitkm, n_subset = 5, q.fixed = 0.5, n.cores = 4)
@@ -109,7 +109,7 @@ ylab("h(z)")
 ```
 ![Predictor-response function](https://github.com/junwei-lu/fbkmr/blob/main/figs/01_hz_plot.png)
 
-Building upon the previous example, we can similarly visualze the bivarate exposure-response function for two predictors, where all of the other predictors are fixed at a particular percentile.
+Building upon the previous example, we can similarly visualize the bivariate exposure-response function for two predictors, where all of the other predictors are fixed at a particular percentile.
 
 ```r
 pred.resp.bivar <- PredictorResponseBivar(fit = fitkm, q.fixed = 0.5,n_subset = 5, n.cores = 4)
